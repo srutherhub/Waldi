@@ -16,6 +16,11 @@ struct MapView: View {
         VStack{
             Map(position: $Position){
                 UserAnnotation()
+                ForEach(AppMapData.DisplayMapItems) { mapItem in
+                    Marker(item:mapItem.mapItem)
+                }
+            }.onChange(of: AppMapData.DisplayMapItems){
+                        Position = .automatic
             }.tint(Color.black)
                 .mapStyle(.standard(elevation: .realistic))
                 .mapControls{MapUserLocationButton()
@@ -25,10 +30,11 @@ struct MapView: View {
                     LocationManager.requestWhenInUseAuthorization()
                     Task {
                         AppMapData.UserCoords = await AppMapData.getUserLocation()
+                        await AppMapData.getNearbyLocations(for:AppMapData.SelectedMenuItem!)
                     }
                 }
                 .safeAreaInset(edge: .top){
-                    MenuView(SelectedMenuItem:$AppMapData.SelectedMenuItem, SelectedTime: $AppMapData.Minutes)
+                    MenuView(AppMapData:AppMapData)
                 }
 
         }}

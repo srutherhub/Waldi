@@ -15,15 +15,24 @@ struct SFilterButton:Identifiable {
     let icon:String
 }
 
-let AMenuItems: [SFilterButton] = [
-    SFilterButton(label:"Coffee", icon:"cup.and.saucer"),
-    SFilterButton(label:"Restaurants", icon:"fork.knife"),
-    SFilterButton(label:"Takeout", icon:"takeoutbag.and.cup.and.straw"),
-    SFilterButton(label:"Shopping", icon:"bag"),
-    SFilterButton(label:"Groceries", icon:"cart"),
-    SFilterButton(label:"Parks", icon:"tree"),
-    SFilterButton(label:"Museums", icon:"paintpalette"),
+enum EMenuOptions:String, RawRepresentable {
+    case coffee = "Coffee"
+    case restaurants = "Restaurants"
+    case takeout = "Takeout"
+    case shopping = "Shopping"
+    case groceries = "Groceries"
+    case parks = "Parks"
+    case museums = "Museums"
+}
 
+let AMenuItems: [SFilterButton] = [
+    SFilterButton(label:EMenuOptions.coffee.rawValue, icon:"cup.and.saucer"),
+    SFilterButton(label:EMenuOptions.restaurants.rawValue, icon:"fork.knife"),
+    SFilterButton(label:EMenuOptions.takeout.rawValue, icon:"takeoutbag.and.cup.and.straw"),
+    SFilterButton(label:EMenuOptions.shopping.rawValue, icon:"bag"),
+    SFilterButton(label:EMenuOptions.groceries.rawValue, icon:"cart"),
+    SFilterButton(label:EMenuOptions.parks.rawValue, icon:"tree"),
+    SFilterButton(label:EMenuOptions.museums.rawValue, icon:"paintpalette"),
 ]
 
 struct SelectedButtonStyle:ButtonStyle {
@@ -56,8 +65,7 @@ enum ETimeOptions:NSInteger, CaseIterable, Identifiable {
     }}
 
 struct MenuView: View {
-    @Binding var SelectedMenuItem:String?
-    @Binding var SelectedTime:ETimeOptions
+    @ObservedObject var AppMapData:MapModel
     
     var body: some View {
         VStack {
@@ -65,24 +73,29 @@ struct MenuView: View {
                 HStack(spacing:4){
                     ForEach(AMenuItems) { option in
                         Button(action:{
-                            if (SelectedMenuItem == option.label) {
-                                SelectedMenuItem = nil
+                            if (AppMapData.SelectedMenuItem == option.label) {
+                                AppMapData.SelectedMenuItem = nil
                             }else {
-                                SelectedMenuItem = option.label
+                                AppMapData.SelectedMenuItem = option.label
+                            }
+                            Task {
+                               await AppMapData.getNearbyLocations(for:option.label)
                             }
                         }){
                             Label(option.label, systemImage: option.icon)
-                        }.buttonStyle(SelectedButtonStyle(isSelected: SelectedMenuItem == option.label))
+                        }.buttonStyle(SelectedButtonStyle(isSelected: AppMapData.SelectedMenuItem == option.label))
                         
                     }
                 }.padding(.horizontal)
             }
             HStack{
                 Spacer()
-                Picker("Minutes", selection: $SelectedTime) {
+                Picker("Minutes", selection: $AppMapData.Minutes) {
                     ForEach(ETimeOptions.allCases) {option in
                         Text(option.desc).tag(option)
                     }
+                }.onChange(of:AppMapData.Minutes){
+                    AppMapData.setDisplayMapItems(cat: String(AppMapData.SelectedMenuItem!))
                 }.padding(2).accentColor(Color.black)
                     .background(Color.yellow)
                     .clipShape(.capsule)
