@@ -7,18 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7648737F2DC80E2000DFDDFE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7648737E2DC80E2000DFDDFE /* MapView.swift */; };
+		764873812DC80F3100DFDDFE /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764873802DC80F3100DFDDFE /* MapModel.swift */; };
+		764873832DC81CE700DFDDFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 764873822DC81CE700DFDDFE /* LaunchScreen.storyboard */; };
+		764873862DC83C4900DFDDFE /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764873852DC83C4900DFDDFE /* MenuView.swift */; };
 		7674EFED2DC7DD47008B7986 /* IOS_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674EFEC2DC7DD47008B7986 /* IOS_ProjectApp.swift */; };
 		7674EFEF2DC7DD47008B7986 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674EFEE2DC7DD47008B7986 /* ContentView.swift */; };
-		7674EFF12DC7DD47008B7986 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674EFF02DC7DD47008B7986 /* Item.swift */; };
 		7674EFF32DC7DD49008B7986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7674EFF22DC7DD49008B7986 /* Assets.xcassets */; };
 		7674EFF62DC7DD49008B7986 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7674EFF52DC7DD49008B7986 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7648737E2DC80E2000DFDDFE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		764873802DC80F3100DFDDFE /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		764873822DC81CE700DFDDFE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		764873852DC83C4900DFDDFE /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		7674EFE92DC7DD47008B7986 /* IOS Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IOS Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7674EFEC2DC7DD47008B7986 /* IOS_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOS_ProjectApp.swift; sourceTree = "<group>"; };
 		7674EFEE2DC7DD47008B7986 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		7674EFF02DC7DD47008B7986 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7674EFF22DC7DD49008B7986 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7674EFF52DC7DD49008B7986 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7674EFF72DC7DD49008B7986 /* IOS_Project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IOS_Project.entitlements; sourceTree = "<group>"; };
@@ -35,9 +41,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7648737D2DC80DDE00DFDDFE /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				7648737E2DC80E2000DFDDFE /* MapView.swift */,
+				764873802DC80F3100DFDDFE /* MapModel.swift */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
+		764873842DC83AAC00DFDDFE /* MenuView */ = {
+			isa = PBXGroup;
+			children = (
+				764873852DC83C4900DFDDFE /* MenuView.swift */,
+			);
+			path = MenuView;
+			sourceTree = "<group>";
+		};
 		7674EFE02DC7DD47008B7986 = {
 			isa = PBXGroup;
 			children = (
+				764873822DC81CE700DFDDFE /* LaunchScreen.storyboard */,
 				7674EFEB2DC7DD47008B7986 /* IOS Project */,
 				7674EFEA2DC7DD47008B7986 /* Products */,
 			);
@@ -54,9 +78,10 @@
 		7674EFEB2DC7DD47008B7986 /* IOS Project */ = {
 			isa = PBXGroup;
 			children = (
+				764873842DC83AAC00DFDDFE /* MenuView */,
+				7648737D2DC80DDE00DFDDFE /* MapView */,
 				7674EFEC2DC7DD47008B7986 /* IOS_ProjectApp.swift */,
 				7674EFEE2DC7DD47008B7986 /* ContentView.swift */,
-				7674EFF02DC7DD47008B7986 /* Item.swift */,
 				7674EFF22DC7DD49008B7986 /* Assets.xcassets */,
 				7674EFF72DC7DD49008B7986 /* IOS_Project.entitlements */,
 				7674EFF42DC7DD49008B7986 /* Preview Content */,
@@ -130,6 +155,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				764873832DC81CE700DFDDFE /* LaunchScreen.storyboard in Resources */,
 				7674EFF62DC7DD49008B7986 /* Preview Assets.xcassets in Resources */,
 				7674EFF32DC7DD49008B7986 /* Assets.xcassets in Resources */,
 			);
@@ -142,8 +168,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				764873862DC83C4900DFDDFE /* MenuView.swift in Sources */,
 				7674EFEF2DC7DD47008B7986 /* ContentView.swift in Sources */,
-				7674EFF12DC7DD47008B7986 /* Item.swift in Sources */,
+				764873812DC80F3100DFDDFE /* MapModel.swift in Sources */,
+				7648737F2DC80E2000DFDDFE /* MapView.swift in Sources */,
 				7674EFED2DC7DD47008B7986 /* IOS_ProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,7 +311,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Get user location";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -292,8 +323,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "SBR.IOS-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -311,7 +345,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Get user location";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -320,8 +357,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "SBR.IOS-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
