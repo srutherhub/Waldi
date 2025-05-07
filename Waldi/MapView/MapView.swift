@@ -20,13 +20,17 @@ struct MapView: View {
                     Marker(item:mapItem.mapItem)
                 }
             }.onChange(of: AppMapData.DisplayMapItems){
-                        Position = .automatic
-            }.tint(Color.blue)
+                withAnimation(){
+                    Position = .automatic
+                }
+            }
+            }.tint(Color.black)
                 .mapStyle(.standard(elevation: .realistic, pointsOfInterest: .excludingAll))
                 .preferredColorScheme(.light)
                 .mapControls{
                     MapUserLocationButton()
                     MapPitchToggle()
+                    MapCompass()
                 }
                 .onAppear{
                     LocationManager.requestWhenInUseAuthorization()

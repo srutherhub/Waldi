@@ -85,7 +85,6 @@ class MapModel:ObservableObject {
         var count = 0
         for item in sortedMapItems {
             count+=1
-            print(count)
             if (count>19) {break}
             let request = MKDirections.Request()
             request.source = MKMapItem(placemark: MKPlacemark(coordinate:userCoords))

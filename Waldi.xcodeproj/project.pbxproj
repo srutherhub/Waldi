@@ -27,7 +27,7 @@
 		7674EFEE2DC7DD47008B7986 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7674EFF22DC7DD49008B7986 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7674EFF52DC7DD49008B7986 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		7674EFF72DC7DD49008B7986 /* IOS_Project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IOS_Project.entitlements; sourceTree = "<group>"; };
+		7674EFF72DC7DD49008B7986 /* Waldi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Waldi.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +83,7 @@
 				7674EFEC2DC7DD47008B7986 /* Waldi.swift */,
 				7674EFEE2DC7DD47008B7986 /* ContentView.swift */,
 				7674EFF22DC7DD49008B7986 /* Assets.xcassets */,
-				7674EFF72DC7DD49008B7986 /* IOS_Project.entitlements */,
+				7674EFF72DC7DD49008B7986 /* Waldi.entitlements */,
 				7674EFF42DC7DD49008B7986 /* Preview Content */,
 			);
 			path = Waldi;
