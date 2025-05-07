@@ -42,32 +42,33 @@ class MapModel:ObservableObject {
     }
 
     //Search for nearby point of interest using natural language
-    func getNearbyLocations(for query: String) async {
+    func getNearbyLocations(for menuItem: EMenuOptions) async {
         var queryResults:[MKMapItem] = []
         
         guard let userCoords = self.UserCoords else {
             return
         }
         let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = query
+        request.naturalLanguageQuery = menuItem.rawValue
+        request.pointOfInterestFilter = MKPointOfInterestFilter(including: menuItem.query)
         request.resultTypes = .pointOfInterest
         request.region = MKCoordinateRegion(
-            center: userCoords, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+            center: userCoords, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
         )
         let search = MKLocalSearch(request: request)
         let response = try? await search.start()
         queryResults = response?.mapItems ?? []
-        if (isNewQuery(query: query)) {
-            self.MapItemsCache[query] = await getLocationsWalkingDistance(mapItems:queryResults)
+        if (isNewQuery(query: menuItem.rawValue)) {
+            self.MapItemsCache[menuItem.rawValue] = await getLocationsWalkingDistance(mapItems:queryResults)
         }
-        setDisplayMapItems(cat: query)
+            setDisplayMapItems(cat: menuItem.rawValue)
     }
     
     //Get walking distance and times of locations
     private func getLocationsWalkingDistance(mapItems: [MKMapItem]) async ->[CustomMapItem] {
         var output:[CustomMapItem]? = []
         
-        let delayBetweenRequests: TimeInterval = 0.15
+        let delayBetweenRequests: TimeInterval = 0.05
         guard let userCoords = self.UserCoords else {
             return []
         }
@@ -84,7 +85,8 @@ class MapModel:ObservableObject {
         var count = 0
         for item in sortedMapItems {
             count+=1
-            if (count>15) {break}
+            print(count)
+            if (count>19) {break}
             let request = MKDirections.Request()
             request.source = MKMapItem(placemark: MKPlacemark(coordinate:userCoords))
             request.destination = item
@@ -99,7 +101,9 @@ class MapModel:ObservableObject {
                     print("No routes found.")
                     return
                 }
-                output?.append(CustomMapItem(mapItem:item,distance: route.distance,time:route.expectedTravelTime/60))
+                DispatchQueue.main.async{
+                        output?.append(CustomMapItem(mapItem:item,distance: route.distance,time:route.expectedTravelTime/60))
+                }
                 
             }
             try? await Task.sleep(nanoseconds: UInt64(delayBetweenRequests * 1_000_000_000))
@@ -115,7 +119,9 @@ class MapModel:ObservableObject {
     }
     
     func setDisplayMapItems(cat:String) {
-        self.DisplayMapItems = []
+        DispatchQueue.main.async {
+            self.DisplayMapItems = []
+        }
         var output:[CustomMapItem] = []
         guard self.MapItemsCache[cat] != nil else {
             return
@@ -128,7 +134,9 @@ class MapModel:ObservableObject {
                     }}
                 }
             }
-        self.DisplayMapItems = output
+        DispatchQueue.main.async{
+            self.DisplayMapItems = output
+        }
         }
 }
 

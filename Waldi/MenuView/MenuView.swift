@@ -15,25 +15,38 @@ struct SFilterButton:Identifiable {
     let icon:String
 }
 
-enum EMenuOptions:String, RawRepresentable {
+enum EMenuOptions:String,CaseIterable {
     case coffee = "Coffee"
     case restaurants = "Restaurants"
-    case takeout = "Takeout"
     case shopping = "Shopping"
     case groceries = "Groceries"
     case parks = "Parks"
     case museums = "Museums"
+    case atm = "ATM"
+    
+    var icon: String {
+        switch self {
+        case .coffee: return "cup.and.saucer"
+        case .restaurants: return "fork.knife"
+        case .shopping: return "bag"
+        case .groceries: return "cart"
+        case .parks: return "tree"
+        case .museums: return "paintpalette"
+            case .atm: return "dollarsign.bank.building"        }
+    }
+    
+    var query:[MKPointOfInterestCategory] {
+        switch self {
+        case .coffee: return [MKPointOfInterestCategory.cafe,MKPointOfInterestCategory.bakery]
+        case .restaurants: return [MKPointOfInterestCategory.restaurant]
+        case .shopping: return [MKPointOfInterestCategory.store]
+        case .groceries: return [MKPointOfInterestCategory.foodMarket]
+        case .parks: return [MKPointOfInterestCategory.park,MKPointOfInterestCategory.beach,MKPointOfInterestCategory.marina]
+        case .museums: return [MKPointOfInterestCategory.museum]
+        case .atm: return [MKPointOfInterestCategory.bank,MKPointOfInterestCategory.atm]
+        }
+    }
 }
-
-let AMenuItems: [SFilterButton] = [
-    SFilterButton(label:EMenuOptions.coffee.rawValue, icon:"cup.and.saucer"),
-    SFilterButton(label:EMenuOptions.restaurants.rawValue, icon:"fork.knife"),
-    SFilterButton(label:EMenuOptions.takeout.rawValue, icon:"takeoutbag.and.cup.and.straw"),
-    SFilterButton(label:EMenuOptions.shopping.rawValue, icon:"bag"),
-    SFilterButton(label:EMenuOptions.groceries.rawValue, icon:"cart"),
-    SFilterButton(label:EMenuOptions.parks.rawValue, icon:"tree"),
-    SFilterButton(label:EMenuOptions.museums.rawValue, icon:"paintpalette"),
-]
 
 struct SelectedButtonStyle:ButtonStyle {
     var isSelected:Bool
@@ -62,7 +75,9 @@ enum ETimeOptions:NSInteger, CaseIterable, Identifiable {
         case .fortyfive: return "45 min"
         case .sixty: return "60 min"
         }
-    }}
+    }
+    
+}
 
 struct MenuView: View {
     @ObservedObject var AppMapData:MapModel
@@ -71,19 +86,19 @@ struct MenuView: View {
         VStack {
             ScrollView(.horizontal, showsIndicators: false){
                 HStack(spacing:4){
-                    ForEach(AMenuItems) { option in
+                    ForEach(EMenuOptions.allCases,id:\.self) { option in
                         Button(action:{
-                            if (AppMapData.SelectedMenuItem == option.label) {
+                            if (AppMapData.SelectedMenuItem == option.rawValue) {
                                 AppMapData.SelectedMenuItem = nil
                             }else {
-                                AppMapData.SelectedMenuItem = option.label
+                                AppMapData.SelectedMenuItem = option.rawValue
                             }
                             Task {
-                               await AppMapData.getNearbyLocations(for:option.label)
+                               await AppMapData.getNearbyLocations(for:option)
                             }
                         }){
-                            Label(option.label, systemImage: option.icon)
-                        }.buttonStyle(SelectedButtonStyle(isSelected: AppMapData.SelectedMenuItem == option.label))
+                            Label(option.rawValue, systemImage: option.icon)
+                        }.buttonStyle(SelectedButtonStyle(isSelected: AppMapData.SelectedMenuItem == option.rawValue))
                         
                     }
                 }.padding(.horizontal)

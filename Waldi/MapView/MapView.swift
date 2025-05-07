@@ -21,16 +21,18 @@ struct MapView: View {
                 }
             }.onChange(of: AppMapData.DisplayMapItems){
                         Position = .automatic
-            }.tint(Color.black)
-                .mapStyle(.standard(elevation: .realistic))
-                .mapControls{MapUserLocationButton()
+            }.tint(Color.blue)
+                .mapStyle(.standard(elevation: .realistic, pointsOfInterest: .excludingAll))
+                .preferredColorScheme(.light)
+                .mapControls{
+                    MapUserLocationButton()
                     MapPitchToggle()
                 }
                 .onAppear{
                     LocationManager.requestWhenInUseAuthorization()
                     Task {
                         AppMapData.UserCoords = await AppMapData.getUserLocation()
-                        await AppMapData.getNearbyLocations(for:AppMapData.SelectedMenuItem!)
+                        await AppMapData.getNearbyLocations(for:EMenuOptions.coffee)
                     }
                 }
                 .safeAreaInset(edge: .top){
