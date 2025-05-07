@@ -11,7 +11,7 @@
 		764873812DC80F3100DFDDFE /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764873802DC80F3100DFDDFE /* MapModel.swift */; };
 		764873832DC81CE700DFDDFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 764873822DC81CE700DFDDFE /* LaunchScreen.storyboard */; };
 		764873862DC83C4900DFDDFE /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764873852DC83C4900DFDDFE /* MenuView.swift */; };
-		7674EFED2DC7DD47008B7986 /* IOS_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674EFEC2DC7DD47008B7986 /* IOS_ProjectApp.swift */; };
+		7674EFED2DC7DD47008B7986 /* Waldi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674EFEC2DC7DD47008B7986 /* Waldi.swift */; };
 		7674EFEF2DC7DD47008B7986 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674EFEE2DC7DD47008B7986 /* ContentView.swift */; };
 		7674EFF32DC7DD49008B7986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7674EFF22DC7DD49008B7986 /* Assets.xcassets */; };
 		7674EFF62DC7DD49008B7986 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7674EFF52DC7DD49008B7986 /* Preview Assets.xcassets */; };
@@ -22,8 +22,8 @@
 		764873802DC80F3100DFDDFE /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		764873822DC81CE700DFDDFE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		764873852DC83C4900DFDDFE /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
-		7674EFE92DC7DD47008B7986 /* IOS Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IOS Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7674EFEC2DC7DD47008B7986 /* IOS_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOS_ProjectApp.swift; sourceTree = "<group>"; };
+		7674EFE92DC7DD47008B7986 /* Waldi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waldi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7674EFEC2DC7DD47008B7986 /* Waldi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waldi.swift; sourceTree = "<group>"; };
 		7674EFEE2DC7DD47008B7986 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7674EFF22DC7DD49008B7986 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7674EFF52DC7DD49008B7986 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				764873822DC81CE700DFDDFE /* LaunchScreen.storyboard */,
-				7674EFEB2DC7DD47008B7986 /* IOS Project */,
+				7674EFEB2DC7DD47008B7986 /* Waldi */,
 				7674EFEA2DC7DD47008B7986 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,23 +70,23 @@
 		7674EFEA2DC7DD47008B7986 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7674EFE92DC7DD47008B7986 /* IOS Project.app */,
+				7674EFE92DC7DD47008B7986 /* Waldi.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7674EFEB2DC7DD47008B7986 /* IOS Project */ = {
+		7674EFEB2DC7DD47008B7986 /* Waldi */ = {
 			isa = PBXGroup;
 			children = (
 				764873842DC83AAC00DFDDFE /* MenuView */,
 				7648737D2DC80DDE00DFDDFE /* MapView */,
-				7674EFEC2DC7DD47008B7986 /* IOS_ProjectApp.swift */,
+				7674EFEC2DC7DD47008B7986 /* Waldi.swift */,
 				7674EFEE2DC7DD47008B7986 /* ContentView.swift */,
 				7674EFF22DC7DD49008B7986 /* Assets.xcassets */,
 				7674EFF72DC7DD49008B7986 /* IOS_Project.entitlements */,
 				7674EFF42DC7DD49008B7986 /* Preview Content */,
 			);
-			path = "IOS Project";
+			path = Waldi;
 			sourceTree = "<group>";
 		};
 		7674EFF42DC7DD49008B7986 /* Preview Content */ = {
@@ -100,9 +100,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7674EFE82DC7DD47008B7986 /* IOS Project */ = {
+		7674EFE82DC7DD47008B7986 /* Waldi */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7674EFFA2DC7DD49008B7986 /* Build configuration list for PBXNativeTarget "IOS Project" */;
+			buildConfigurationList = 7674EFFA2DC7DD49008B7986 /* Build configuration list for PBXNativeTarget "Waldi" */;
 			buildPhases = (
 				7674EFE52DC7DD47008B7986 /* Sources */,
 				7674EFE62DC7DD47008B7986 /* Frameworks */,
@@ -112,9 +112,9 @@
 			);
 			dependencies = (
 			);
-			name = "IOS Project";
+			name = Waldi;
 			productName = "IOS Project";
-			productReference = 7674EFE92DC7DD47008B7986 /* IOS Project.app */;
+			productReference = 7674EFE92DC7DD47008B7986 /* Waldi.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -132,7 +132,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7674EFE42DC7DD47008B7986 /* Build configuration list for PBXProject "IOS Project" */;
+			buildConfigurationList = 7674EFE42DC7DD47008B7986 /* Build configuration list for PBXProject "Waldi" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -145,7 +145,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7674EFE82DC7DD47008B7986 /* IOS Project */,
+				7674EFE82DC7DD47008B7986 /* Waldi */,
 			);
 		};
 /* End PBXProject section */
@@ -172,7 +172,7 @@
 				7674EFEF2DC7DD47008B7986 /* ContentView.swift in Sources */,
 				764873812DC80F3100DFDDFE /* MapModel.swift in Sources */,
 				7648737F2DC80E2000DFDDFE /* MapView.swift in Sources */,
-				7674EFED2DC7DD47008B7986 /* IOS_ProjectApp.swift in Sources */,
+				7674EFED2DC7DD47008B7986 /* Waldi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,11 +302,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "IOS Project/IOS_Project.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Waldi/Waldi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"IOS Project/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Waldi/Preview Content\"";
 				DEVELOPMENT_TEAM = 6KHFM35457;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -337,11 +337,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "IOS Project/IOS_Project.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Waldi/Waldi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"IOS Project/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Waldi/Preview Content\"";
 				DEVELOPMENT_TEAM = 6KHFM35457;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -370,7 +370,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7674EFE42DC7DD47008B7986 /* Build configuration list for PBXProject "IOS Project" */ = {
+		7674EFE42DC7DD47008B7986 /* Build configuration list for PBXProject "Waldi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7674EFF82DC7DD49008B7986 /* Debug */,
@@ -379,7 +379,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7674EFFA2DC7DD49008B7986 /* Build configuration list for PBXNativeTarget "IOS Project" */ = {
+		7674EFFA2DC7DD49008B7986 /* Build configuration list for PBXNativeTarget "Waldi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7674EFFB2DC7DD49008B7986 /* Debug */,
