@@ -88,13 +88,9 @@ struct MenuView: View {
                 HStack(spacing:4){
                     ForEach(EMenuOptions.allCases,id:\.self) { option in
                         Button(action:{
-                            if (AppMapData.SelectedMenuItem == option.rawValue) {
-                                AppMapData.SelectedMenuItem = nil
-                            }else {
-                                AppMapData.SelectedMenuItem = option.rawValue
-                            }
+                            AppMapData.SelectedMenuItem = option.rawValue
                             Task {
-                               await AppMapData.getNearbyLocations(for:option)
+                                await AppMapData.getNearbyLocations(for:option)
                             }
                         }){
                             Label(option.rawValue, systemImage: option.icon)
@@ -110,12 +106,13 @@ struct MenuView: View {
                         Text(option.desc).tag(option)
                     }
                 }.onChange(of:AppMapData.Minutes){
-                    AppMapData.setDisplayMapItems(cat: String(AppMapData.SelectedMenuItem!))
+                    AppMapData.setDisplayMapItems(cat: AppMapData.SelectedMenuItem)
                 }.padding(2).accentColor(Color.black)
                     .background(Color.yellow)
                     .clipShape(.capsule)
                 
-            }}
+            }
+        }
 
     }
 }

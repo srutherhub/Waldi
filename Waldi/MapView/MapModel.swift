@@ -17,12 +17,12 @@ struct CustomMapItem: Identifiable, Equatable {
 
 class MapModel:ObservableObject {
     @Published var UserCoords:CLLocationCoordinate2D?
-    @Published var SelectedMenuItem:String?
+    @Published var SelectedMenuItem:String
     @Published var Minutes:ETimeOptions
     @Published var DisplayMapItems:[CustomMapItem]
     private var MapItemsCache: [String:[CustomMapItem]]
     
-    init(UserCoords:CLLocationCoordinate2D?=nil, SelectedMenuItem:String? = EMenuOptions.coffee.rawValue,Minutes:ETimeOptions = .fifteen,MapItemsCache:[String:[CustomMapItem]] = [:], DisplayMapItems:[CustomMapItem] = []) {
+    init(UserCoords:CLLocationCoordinate2D?=nil, SelectedMenuItem:String = EMenuOptions.coffee.rawValue,Minutes:ETimeOptions = .fifteen,MapItemsCache:[String:[CustomMapItem]] = [:], DisplayMapItems:[CustomMapItem] = []) {
         self.UserCoords = UserCoords
         self.SelectedMenuItem = SelectedMenuItem
         self.Minutes = Minutes
@@ -117,25 +117,19 @@ class MapModel:ObservableObject {
         return false
     }
     
-    func setDisplayMapItems(cat:String) {
+    func setDisplayMapItems(cat: String) {
         DispatchQueue.main.async {
             self.DisplayMapItems = []
         }
-        var output:[CustomMapItem] = []
-        guard self.MapItemsCache[cat] != nil else {
+        
+        guard let items = self.MapItemsCache[cat] else {
             return
         }
-        for (item) in self.MapItemsCache {
-            if (item.key == cat) {
-                for (mapItem) in item.value {
-                    if (mapItem.time <= TimeInterval(self.Minutes.rawValue)) {
-                        output.append(mapItem)
-                    }}
-                }
-            }
-        DispatchQueue.main.async{
+        let output = items.filter { $0.time <= TimeInterval(self.Minutes.rawValue) }
+
+        DispatchQueue.main.async {
             self.DisplayMapItems = output
         }
-        }
+    }
 }
 

@@ -11,26 +11,30 @@ import MapKit
 struct MapView: View {
     @StateObject private var AppMapData = MapModel()
     @State private var Position: MapCameraPosition = .userLocation(fallback: .automatic)
+    @State private var SelectedPOI:CustomMapItem?
+    
     let LocationManager = CLLocationManager()
     var body: some View {
         VStack{
             Map(position: $Position){
                 UserAnnotation()
                 ForEach(AppMapData.DisplayMapItems) { mapItem in
-                    Marker(item:mapItem.mapItem)
+                    Annotation(mapItem.mapItem.name ?? AppMapData.SelectedMenuItem,coordinate: mapItem.mapItem.placemark.coordinate){
+                        Image(systemName:"mappin.circle.fill")
+                            .onTapGesture {
+                            SelectedPOI = mapItem
+                        }
+                    }
                 }
             }.onChange(of: AppMapData.DisplayMapItems){
-                withAnimation(){
                     Position = .automatic
-                }
             }
             }.tint(Color.black)
                 .mapStyle(.standard(elevation: .realistic, pointsOfInterest: .excludingAll))
                 .preferredColorScheme(.light)
                 .mapControls{
-                    MapUserLocationButton()
-                    MapPitchToggle()
-                    MapCompass()
+                    MapUserLocationButton().tint(Color.blue)
+                    MapPitchToggle().tint(Color.blue)
                 }
                 .onAppear{
                     LocationManager.requestWhenInUseAuthorization()
@@ -42,10 +46,12 @@ struct MapView: View {
                 .safeAreaInset(edge: .top){
                     MenuView(AppMapData:AppMapData)
                 }
-
-        }}
+                        SinglePOIView(POI: $SelectedPOI)
+        }
 
 }
+
+
 
 
 #Preview {
