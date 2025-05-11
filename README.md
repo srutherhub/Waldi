@@ -31,9 +31,7 @@
 
 1. Sharing a list of POIs with other users (via email or in-app)  
 2. Authentication? (Is this needed?)
+3. Since I cannot access point of interest data through MapKit, need to integrate with google maps, other third party for photos, reviews, cost, opening hours, etc.
 
 ---
 
-## 🐞 Issues
-
-1. `SelectedMenuItem` should not be `nil` — causes a crash
