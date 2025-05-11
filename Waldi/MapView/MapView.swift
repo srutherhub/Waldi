@@ -15,44 +15,56 @@ struct MapView: View {
     
     let LocationManager = CLLocationManager()
     var body: some View {
-        VStack{
+        ZStack{
             Map(position: $Position){
                 UserAnnotation()
-                ForEach(AppMapData.DisplayMapItems) { mapItem in
-                    Annotation(mapItem.mapItem.name ?? AppMapData.SelectedMenuItem,coordinate: mapItem.mapItem.placemark.coordinate){
-                        Image(systemName:"mappin.circle.fill")
+                ForEach(AppMapData.DisplayMapItems) { annoMapItem in
+                    Annotation(annoMapItem.mapItem.name ?? AppMapData.SelectedMenuItem.rawValue,coordinate: annoMapItem.mapItem.placemark.coordinate){
+                        Image(systemName:"mappin.circle.fill").imageScale(.large)
+                            .scaleEffect(SelectedPOI?.id == annoMapItem.id ? 1.5 : 1).animation(.smooth(duration: 0.1), value: SelectedPOI)
+                            .foregroundStyle(SelectedPOI?.id == annoMapItem.id  ? Color.yellow : Color.black)
                             .onTapGesture {
-                            SelectedPOI = mapItem
-                        }
+                                SelectedPOI = annoMapItem
+                                Task {
+                                    if var poi = SelectedPOI {
+                                        SelectedPOI = await poi.getLocationsWalkingDistance(POI: poi.mapItem)
+                                    }
+                                }
+                            }
+
                     }
                 }
             }.onChange(of: AppMapData.DisplayMapItems){
-                    Position = .automatic
+                if let region = AppMapData.getBoundingRegion() {
+                    withAnimation {
+                        Position = .region(region)
+                    }
+                }
             }
-            }.tint(Color.black)
+            VStack {
+                Spacer()
+                PointOfInterestView(POI:$SelectedPOI)
+            }.padding(.bottom,4)
+        }.tint(Color.black)
                 .mapStyle(.standard(elevation: .realistic, pointsOfInterest: .excludingAll))
-                .preferredColorScheme(.light)
                 .mapControls{
-                    MapUserLocationButton().tint(Color.blue)
-                    MapPitchToggle().tint(Color.blue)
+                    MapUserLocationButton()
+                    MapPitchToggle()
                 }
                 .onAppear{
                     LocationManager.requestWhenInUseAuthorization()
                     Task {
-                        AppMapData.UserCoords = await AppMapData.getUserLocation()
-                        await AppMapData.getNearbyLocations(for:EMenuOptions.coffee)
+                        MapModel.UserCoords = await AppMapData.getUserLocation()
+                        await AppMapData.getNearbyLocations()
                     }
                 }
                 .safeAreaInset(edge: .top){
                     MenuView(AppMapData:AppMapData)
                 }
-                        SinglePOIView(POI: $SelectedPOI)
+
         }
 
 }
-
-
-
 
 #Preview {
     MapView()

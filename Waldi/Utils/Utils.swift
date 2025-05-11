@@ -8,22 +8,41 @@
 import Foundation
 import MapKit
 
-class Utils {
+final class Utils {
+    static var isMetric = getLocale()
     
-    public static func distToKmMiles(distance:CLLocationDistance?, isMiles:Bool = false) -> String {
+    //Return formatted string of distance, convert to miles if necessary
+    public static func distToKmMiles(distance:CLLocationDistance?) -> String {
         guard let dist = distance else {
             return ""
         }
-        if (isMiles) {
-            if (dist < 1609){
-                return String(dist * 3.281 ) + " ft"
-            }
-            return String(dist / 1609 ) + " mi"
-        }
-        if (dist < 1000){
-            return String(dist) + " m"
+        if (!self.isMetric) {
+            return String(format: "%.2f", dist / 1609 ) + " mi"
         } else {
-            return String(dist/1000) + " km"
+            return String(format: "%.0f", dist) + " m"
         }
+    }
+    
+    //Return true for metric, false for anything else
+    public static func getLocale() -> Bool{
+        let locale = Locale.current
+        if (locale.measurementSystem == .us) {
+            return false
+        }else {
+            return true
+        }
+    }
+    
+    public static func secondsToMinutes(time:TimeInterval?) -> String {
+        
+        guard let input = time else {
+            return ""
+        }
+            
+        let minutes = Int(input)/60
+        let seconds = Int(input) % 60
+        
+        return "\(minutes) min \(seconds) sec"
+        
     }
 }
