@@ -6,6 +6,7 @@
 //book.closed
 
 import SwiftUI
+import MapKit
 
 struct PointOfInterestView: View {
     @Binding var POI:CustomMapItem?
@@ -18,8 +19,8 @@ struct PointOfInterestView: View {
                 VStack {
                     HStack {
                         VStack {
-                            Text(POI?.mapItem.pointOfInterestCategory?.rawValue.replacingOccurrences(of: "MKPOICategory", with: "") ?? "").font(.caption).foregroundStyle(.black).frame(maxWidth: .infinity, alignment: .leading)
-                            Text(POI?.mapItem.name ?? "error").font(.title2).fontWeight(.bold).foregroundStyle(.black).frame(maxWidth: .infinity, alignment: .leading)
+                            Text(POI?.mapItem.name ?? "").font(.title2).fontWeight(.bold).foregroundStyle(.black).frame(maxWidth: .infinity, alignment: .leading)
+                            Text("\(POI?.mapItem.pointOfInterestCategory?.rawValue.replacingOccurrences(of: "MKPOICategory", with: "") ?? "") · \(POI?.mapItem.placemark.locality ?? "") \(POI?.mapItem.placemark.administrativeArea ?? "")").font(.caption).foregroundStyle(.black).frame(maxWidth: .infinity, alignment: .leading)
 
                         }
                         Spacer()
@@ -28,12 +29,14 @@ struct PointOfInterestView: View {
                             isOpenDrawer = false
                         }.imageScale(.large)
                     }
-                    Divider()
                     HStack {
                         if (POI?.distance != nil) {
                             Image(systemName: "figure.walk").foregroundStyle(Color.black).imageScale(.large)
                             Text(" · \(Utils.distToKmMiles(distance: POI?.distance)) · ")
                             Text("\(Utils.secondsToMinutes(time: POI?.time))")
+                            Button("Apple") {
+                                POI?.mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeWalking])
+                            }.buttonStyle(.bordered)
                         }else {
                             HStack{
                                 Spacer()
@@ -44,7 +47,7 @@ struct PointOfInterestView: View {
                     }.foregroundStyle(.black).frame(maxWidth: .infinity, alignment: .leading)
                         Rectangle()
                             .fill(Color.clear)
-                            .frame(height: isOpenDrawer ? 420 : 0)
+                            .frame(height: isOpenDrawer ? .infinity : 0)
                             .animation(.smooth(duration: 0.1), value: isOpenDrawer)
                     Divider()
                     VStack{
@@ -52,7 +55,7 @@ struct PointOfInterestView: View {
                             Text("Website").frame(maxWidth: .infinity, alignment: .leading).font(.subheadline).foregroundStyle(.black)
                             if let url = poi.mapItem.url {
                                 Link(destination: url) {
-                                    Text(poi.mapItem.url?.absoluteString ?? "None").foregroundStyle(.blue).font(.subheadline)
+                                    Text(poi.mapItem.url?.absoluteString ?? "").foregroundStyle(.blue).font(.subheadline)
                                 }.frame(maxWidth: .infinity, alignment: .leading)}
                             Text("Phone number").frame(maxWidth: .infinity, alignment: .leading).font(.subheadline).foregroundStyle(.black)
                             if let phone = poi.mapItem.phoneNumber {
@@ -62,7 +65,7 @@ struct PointOfInterestView: View {
                                 }
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             } else {
-                                Text("None")
+                                Text("")
                                     .frame(maxWidth: .infinity, alignment: .leading).font(.subheadline)
                             }
                         }

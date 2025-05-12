@@ -3,40 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7648737F2DC80E2000DFDDFE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7648737E2DC80E2000DFDDFE /* MapView.swift */; };
-		764873812DC80F3100DFDDFE /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764873802DC80F3100DFDDFE /* MapModel.swift */; };
 		764873832DC81CE700DFDDFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 764873822DC81CE700DFDDFE /* LaunchScreen.storyboard */; };
-		764873862DC83C4900DFDDFE /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764873852DC83C4900DFDDFE /* MenuView.swift */; };
-		7674EFED2DC7DD47008B7986 /* Waldi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674EFEC2DC7DD47008B7986 /* Waldi.swift */; };
-		7674EFEF2DC7DD47008B7986 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674EFEE2DC7DD47008B7986 /* ContentView.swift */; };
-		7674EFF32DC7DD49008B7986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7674EFF22DC7DD49008B7986 /* Assets.xcassets */; };
-		7674EFF62DC7DD49008B7986 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7674EFF52DC7DD49008B7986 /* Preview Assets.xcassets */; };
-		7678ABFF2DCC3366003DB3A5 /* POIListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678ABFE2DCC3366003DB3A5 /* POIListView.swift */; };
-		7678AC012DCC351E003DB3A5 /* PointOfInterestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678AC002DCC351E003DB3A5 /* PointOfInterestView.swift */; };
-		7678AC042DCC4479003DB3A5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678AC032DCC4479003DB3A5 /* Utils.swift */; };
-		7678AC062DCF9B8D003DB3A5 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678AC052DCF9B8D003DB3A5 /* MenuModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7648737E2DC80E2000DFDDFE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		764873802DC80F3100DFDDFE /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		764873822DC81CE700DFDDFE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		764873852DC83C4900DFDDFE /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		7674EFE92DC7DD47008B7986 /* Waldi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waldi.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7674EFEC2DC7DD47008B7986 /* Waldi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waldi.swift; sourceTree = "<group>"; };
-		7674EFEE2DC7DD47008B7986 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		7674EFF22DC7DD49008B7986 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7674EFF52DC7DD49008B7986 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		7674EFF72DC7DD49008B7986 /* Waldi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Waldi.entitlements; sourceTree = "<group>"; };
-		7678ABFE2DCC3366003DB3A5 /* POIListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIListView.swift; sourceTree = "<group>"; };
-		7678AC002DCC351E003DB3A5 /* PointOfInterestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterestView.swift; sourceTree = "<group>"; };
-		7678AC032DCC4479003DB3A5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		7678AC052DCF9B8D003DB3A5 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		7678AC192DD1639B003DB3A5 /* Waldi */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Waldi; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		7674EFE62DC7DD47008B7986 /* Frameworks */ = {
@@ -49,31 +30,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7648737D2DC80DDE00DFDDFE /* MapView */ = {
-			isa = PBXGroup;
-			children = (
-				7648737E2DC80E2000DFDDFE /* MapView.swift */,
-				764873802DC80F3100DFDDFE /* MapModel.swift */,
-			);
-			path = MapView;
-			sourceTree = "<group>";
-		};
-		764873842DC83AAC00DFDDFE /* MenuView */ = {
-			isa = PBXGroup;
-			children = (
-				764873852DC83C4900DFDDFE /* MenuView.swift */,
-				7678AC052DCF9B8D003DB3A5 /* MenuModel.swift */,
-				7678AC002DCC351E003DB3A5 /* PointOfInterestView.swift */,
-				7678ABFE2DCC3366003DB3A5 /* POIListView.swift */,
-			);
-			path = MenuView;
-			sourceTree = "<group>";
-		};
 		7674EFE02DC7DD47008B7986 = {
 			isa = PBXGroup;
 			children = (
 				764873822DC81CE700DFDDFE /* LaunchScreen.storyboard */,
-				7674EFEB2DC7DD47008B7986 /* Waldi */,
+				7678AC192DD1639B003DB3A5 /* Waldi */,
 				7674EFEA2DC7DD47008B7986 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,37 +45,6 @@
 				7674EFE92DC7DD47008B7986 /* Waldi.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		7674EFEB2DC7DD47008B7986 /* Waldi */ = {
-			isa = PBXGroup;
-			children = (
-				7678AC022DCC4468003DB3A5 /* Utils */,
-				764873842DC83AAC00DFDDFE /* MenuView */,
-				7648737D2DC80DDE00DFDDFE /* MapView */,
-				7674EFEC2DC7DD47008B7986 /* Waldi.swift */,
-				7674EFEE2DC7DD47008B7986 /* ContentView.swift */,
-				7674EFF22DC7DD49008B7986 /* Assets.xcassets */,
-				7674EFF72DC7DD49008B7986 /* Waldi.entitlements */,
-				7674EFF42DC7DD49008B7986 /* Preview Content */,
-			);
-			path = Waldi;
-			sourceTree = "<group>";
-		};
-		7674EFF42DC7DD49008B7986 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				7674EFF52DC7DD49008B7986 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		7678AC022DCC4468003DB3A5 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				7678AC032DCC4479003DB3A5 /* Utils.swift */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +61,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				7678AC192DD1639B003DB3A5 /* Waldi */,
 			);
 			name = Waldi;
 			productName = "IOS Project";
@@ -176,8 +109,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				764873832DC81CE700DFDDFE /* LaunchScreen.storyboard in Resources */,
-				7674EFF62DC7DD49008B7986 /* Preview Assets.xcassets in Resources */,
-				7674EFF32DC7DD49008B7986 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,15 +119,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7678AC012DCC351E003DB3A5 /* PointOfInterestView.swift in Sources */,
-				764873862DC83C4900DFDDFE /* MenuView.swift in Sources */,
-				7678AC062DCF9B8D003DB3A5 /* MenuModel.swift in Sources */,
-				7674EFEF2DC7DD47008B7986 /* ContentView.swift in Sources */,
-				764873812DC80F3100DFDDFE /* MapModel.swift in Sources */,
-				7678ABFF2DCC3366003DB3A5 /* POIListView.swift in Sources */,
-				7648737F2DC80E2000DFDDFE /* MapView.swift in Sources */,
-				7674EFED2DC7DD47008B7986 /* Waldi.swift in Sources */,
-				7678AC042DCC4479003DB3A5 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

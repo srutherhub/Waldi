@@ -78,12 +78,13 @@ final class MapModel:ObservableObject {
         guard let userCoords = MapModel.UserCoords else {
             return
         }
-        let region = MKCoordinateRegion(center:userCoords,span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+        let region = MKCoordinateRegion(center:userCoords,span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25))
         await getLocationsInRegion(region: region, menuItem: menuItem)
 
     }
     
     func getLocationsInRegion(region:MKCoordinateRegion, menuItem:EMenuOptions) async {
+        if (isNewQuery(query: menuItem.rawValue)) {
         var queryResults:[MKMapItem] = []
         let request = MKLocalSearch.Request()
         request.pointOfInterestFilter = MKPointOfInterestFilter(including: menuItem.query)
@@ -97,8 +98,7 @@ final class MapModel:ObservableObject {
         }catch{
             print(error.localizedDescription)
         }
-        if (isNewQuery(query: menuItem.rawValue)) {
-            self.MapItemsCache[menuItem.rawValue] = queryResults.map {CustomMapItem(mapItem: $0, time: 0)}
+        self.MapItemsCache[menuItem.rawValue] = queryResults.map {CustomMapItem(mapItem: $0, time: 0)}
         }
         setDisplayMapItems(cat: menuItem.rawValue)
     }

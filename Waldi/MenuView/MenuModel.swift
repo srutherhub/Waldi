@@ -17,10 +17,10 @@ struct SFilterButton:Identifiable {
 enum EMenuOptions:String,CaseIterable {
     case coffee = "Coffee"
     case restaurants = "Restaurants"
-    case shopping = "Shopping"
-    case groceries = "Groceries"
     case parks = "Parks"
     case museums = "Museums"
+    case shopping = "Shopping"
+    case groceries = "Groceries"
     case atm = "ATM"
     
     var icon: String {
@@ -40,8 +40,8 @@ enum EMenuOptions:String,CaseIterable {
         case .restaurants: return [.restaurant]
         case .shopping: return [.store]
         case .groceries: return [.foodMarket]
-        case .parks: return [.park,.beach,.marina]
-        case .museums: return [.museum]
+        case .parks: return [.park,.beach,.nationalPark,.hiking]
+        case .museums: return [.museum,.nationalMonument]
         case .atm: return [.bank,.atm]
         }
     }
