@@ -37,7 +37,7 @@ struct MenuView: View {
                     }
                 }.pickerStyle(.menu)
                     .padding(2)
-                    .background(Color.yellow)
+                    .background(Color("PrimaryColor"))
                     .tint(Color.black)
                     .clipShape(.capsule)
                     .onChange(of:AppMapData.SelectedDistance){
@@ -56,8 +56,8 @@ struct SelectedButtonStyle:ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding(8)
-            .foregroundColor(Color.black)
-            .background(isSelected ? Color.yellow : Color.white)
+            .foregroundColor(isSelected ?  Color.black : Color("PrimaryFontColor"))
+            .background(isSelected ? Color("PrimaryColor") : Color("PrimaryBackgroundColor"))
             .clipShape(.capsule)
     }
 }

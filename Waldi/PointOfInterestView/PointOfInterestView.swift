@@ -19,19 +19,19 @@ struct PointOfInterestView: View {
                 VStack {
                     HStack {
                         VStack {
-                            Text(POI?.mapItem.name ?? "").font(.title2).fontWeight(.bold).foregroundStyle(.black).frame(maxWidth: .infinity, alignment: .leading)
-                            Text("\(POI?.mapItem.pointOfInterestCategory?.rawValue.replacingOccurrences(of: "MKPOICategory", with: "") ?? "") · \(POI?.mapItem.placemark.locality ?? "") \(POI?.mapItem.placemark.administrativeArea ?? "")").font(.caption).foregroundStyle(.black).frame(maxWidth: .infinity, alignment: .leading)
+                            Text(POI?.mapItem.name ?? "").font(.title2).fontWeight(.bold).foregroundStyle(Color("PrimaryFontColor")).frame(maxWidth: .infinity, alignment: .leading)
+                            Text("\(POI?.mapItem.pointOfInterestCategory?.rawValue.replacingOccurrences(of: "MKPOICategory", with: "") ?? "") · \(POI?.mapItem.placemark.locality ?? "") \(POI?.mapItem.placemark.administrativeArea ?? "")").font(.caption).foregroundStyle(Color("PrimaryFontColor")).frame(maxWidth: .infinity, alignment: .leading)
 
                         }
                         Spacer()
                         Button("",systemImage: "xmark.circle.fill") {
                             POI = nil
                             isOpenDrawer = false
-                        }.imageScale(.large)
+                        }.imageScale(.large).frame(alignment: .top)
                     }
                     HStack {
                         if (POI?.distance != nil) {
-                            Image(systemName: "figure.walk").foregroundStyle(Color.black).imageScale(.large)
+                            Image(systemName: "figure.walk").foregroundStyle(Color("PrimaryFontColor")).imageScale(.large)
                             Text(" · \(Utils.distToKmMiles(distance: POI?.distance)) · ")
                             Text("\(Utils.secondsToMinutes(time: POI?.time))")
                             Button("Apple") {
@@ -44,7 +44,7 @@ struct PointOfInterestView: View {
                                 Spacer()
                             }
                         }
-                    }.foregroundStyle(.black).frame(maxWidth: .infinity, alignment: .leading)
+                    }.foregroundStyle(Color("PrimaryFontColor")).frame(maxWidth: .infinity, alignment: .leading)
                         Rectangle()
                             .fill(Color.clear)
                             .frame(height: isOpenDrawer ? .infinity : 0)
@@ -52,12 +52,12 @@ struct PointOfInterestView: View {
                     Divider()
                     VStack{
                         if let poi = POI {
-                            Text("Website").frame(maxWidth: .infinity, alignment: .leading).font(.subheadline).foregroundStyle(.black)
+                            Text("Website").frame(maxWidth: .infinity, alignment: .leading).font(.subheadline).foregroundStyle(Color("PrimaryFontColor"))
                             if let url = poi.mapItem.url {
                                 Link(destination: url) {
                                     Text(poi.mapItem.url?.absoluteString ?? "").foregroundStyle(.blue).font(.subheadline)
                                 }.frame(maxWidth: .infinity, alignment: .leading)}
-                            Text("Phone number").frame(maxWidth: .infinity, alignment: .leading).font(.subheadline).foregroundStyle(.black)
+                            Text("Phone number").frame(maxWidth: .infinity, alignment: .leading).font(.subheadline).foregroundStyle(Color("PrimaryFontColor"))
                             if let phone = poi.mapItem.phoneNumber {
                                 Link(destination: URL(string: "tel:\(phone)")!) {
                                     Text(phone)
@@ -73,7 +73,7 @@ struct PointOfInterestView: View {
                 }
                 .padding(8)
                     .frame(maxWidth:.infinity)
-                    .background(Color.white)
+                    .background(Color("PrimaryBackgroundColor"))
                     .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                     .padding(.horizontal,4)
                     .transition(.move(edge: .bottom).combined(with: .opacity))
