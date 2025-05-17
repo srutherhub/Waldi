@@ -25,13 +25,13 @@ enum EMenuOptions:String,CaseIterable {
     
     var icon: String {
         switch self {
-        case .coffee: return "cup.and.saucer"
+        case .coffee: return "cup.and.saucer.fill"
         case .restaurants: return "fork.knife"
-        case .shopping: return "bag"
-        case .groceries: return "cart"
-        case .parks: return "tree"
-        case .museums: return "paintpalette"
-            case .atm: return "dollarsign.bank.building"        }
+        case .shopping: return "bag.fill"
+        case .groceries: return "cart.fill"
+        case .parks: return "tree.fill"
+        case .museums: return "paintpalette.fill"
+            case .atm: return "dollarsign.bank.building.fill"        }
     }
     
     var query:[MKPointOfInterestCategory] {

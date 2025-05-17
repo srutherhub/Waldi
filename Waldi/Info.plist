@@ -1,0 +1,11 @@
+{
+	"LSApplicationQueriesSchemes" = (
+		comgooglemaps,
+	);
+	CFBundleExecutable = "$(EXECUTABLE_NAME)";
+	CFBundleIdentifier = "SBR.Waldi";
+	"NSLocationWhenInUseUsageDescription" = "Can Waldi access your location?";
+	"Application Category" = Travel;
+	"INFOPLIST_KEY_CFBundleDisplayName = Waldi\nINFOPLIST_KEY_CFBundleDisplayName = Waldi\nBundle Display Name" = Waldi;
+	"UILaunchStoryboardName" = "LaunchScreen.storyboard";
+}
